@@ -18,14 +18,7 @@ class AppTheme{
     titleSmall: TextStyle(fontSize: kSize22, fontWeight: FontWeight.w600),
     titleMedium: TextStyle(fontSize: kSize24, fontWeight: FontWeight.w600),
     titleLarge: TextStyle(fontSize: kSize32, fontWeight: FontWeight.w700),
-    // displaySmall: ,
     displayMedium: TextStyle(fontSize: kSize30, fontWeight: FontWeight.normal),
-    // displayLarge:,
-    // bodySmall:,
-    // bodyMedium: ,
-    // bodyLarge:,
     headlineSmall: TextStyle(fontSize: kSize20, fontWeight: FontWeight.normal),
-    // headlineMedium: ,
-    // headlineLarge:
   );
 }

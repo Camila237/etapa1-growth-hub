@@ -13,7 +13,7 @@ class AppStyles {
       ButtonStyle(
         backgroundColor: WidgetStateProperty.all<Color>(colorBg), // Background color
         foregroundColor: WidgetStateProperty.all<Color>(colorText), // Text color
-        padding: WidgetStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(horizontal: 20, vertical: 15)),
+        padding: WidgetStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(horizontal: kSize20, vertical: kSize16)),
         elevation: WidgetStateProperty.all<double?>(elevation),
         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
@@ -25,14 +25,4 @@ class AppStyles {
           ),
         ),
       );
-      /*ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radius ?? kNone),
-          side: BorderSide(
-            color: colorBorder ?? kBlack,
-            width: widthSide ?? kSize1,
-          ),
-        ),
-        elevation: elevation,
-      );*/
 }

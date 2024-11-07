@@ -1,5 +1,5 @@
-import 'package:etapa1/share/exports.dart';
 import 'package:flutter/material.dart';
+import 'package:etapa1/share/exports.dart';
 import 'package:provider/provider.dart';
 import 'package:etapa1/core/exports.dart';
 import 'package:etapa1/config/exports.dart';
@@ -15,23 +15,30 @@ class EditScreen extends StatefulWidget {
 
 class _EditScreenState extends State<EditScreen> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController titleController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
-  TextEditingController categoryController = TextEditingController();
-  TextEditingController priceController = TextEditingController();
-  TextEditingController ratingController = TextEditingController();
-  TextEditingController imageController = TextEditingController();
+  late TextEditingController titleController;
+  late TextEditingController descriptionController;
+  late TextEditingController categoryController;
+  late TextEditingController priceController;
+  late TextEditingController ratingController;
+  late TextEditingController imageController;
 
   @override
   void initState() {
     super.initState();
     if (widget.product != null) {
-      titleController.text = widget.product!.title;
-      descriptionController.text = widget.product!.description;
-      categoryController.text = widget.product!.category;
-      priceController.text = widget.product!.price.toString();
-      ratingController.text = widget.product!.rating.rate.toString();
-      imageController.text = widget.product!.image;
+      titleController = TextEditingController(text: widget.product!.title);
+      descriptionController = TextEditingController(text: widget.product!.description);
+      categoryController = TextEditingController(text: widget.product!.category);
+      priceController = TextEditingController(text: widget.product!.price.toString());
+      ratingController = TextEditingController(text: widget.product!.rating.rate.toString());
+      imageController = TextEditingController(text: widget.product!.image);
+    }else{
+      titleController = TextEditingController();
+      descriptionController = TextEditingController();
+      categoryController = TextEditingController();
+      priceController = TextEditingController();
+      ratingController = TextEditingController();
+      imageController = TextEditingController();
     }
   }
 
@@ -88,12 +95,7 @@ class _EditScreenState extends State<EditScreen> {
                             borderRadius: BorderRadius.circular(kSize10),
                           ),
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter a title';
-                          }
-                          return null;
-                        },
+                        validator: (value) => Validations.title(value: value, message: 'Please enter a title'),
                       ),
                       const SizedBox(height: kSize20),
                       TextFormField(
@@ -104,12 +106,9 @@ class _EditScreenState extends State<EditScreen> {
                             borderRadius: BorderRadius.circular(kSize10),
                           ),
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter a description';
-                          }
-                          return null;
-                        },
+                        validator: (value) => Validations.description(
+                            value: value,
+                            message: 'Please enter a description'),
                       ),
                       const SizedBox(height: kSize20),
                       TextFormField(
@@ -120,12 +119,8 @@ class _EditScreenState extends State<EditScreen> {
                             borderRadius: BorderRadius.circular(kSize10),
                           ),
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter a category';
-                          }
-                          return null;
-                        },
+                        validator: (value) => Validations.category(
+                            value: value, message: 'Please enter a category'),
                       ),
                       const SizedBox(height: kSize20),
                       TextFormField(
@@ -137,12 +132,10 @@ class _EditScreenState extends State<EditScreen> {
                             borderRadius: BorderRadius.circular(kSize10),
                           ),
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter a price';
-                          }
-                          return null;
-                        },
+                        validator: (value) => Validations.number(
+                            value: value,
+                            message: 'Please enter a price',
+                            messageRegex: 'Is not a valid number.'),
                       ),
                       const SizedBox(height: kSize20),
                       TextFormField(
@@ -154,12 +147,10 @@ class _EditScreenState extends State<EditScreen> {
                             borderRadius: BorderRadius.circular(kSize10),
                           ),
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter a rating';
-                          }
-                          return null;
-                        },
+                        validator: (value) => Validations.number(
+                            value: value,
+                            message: 'Please enter a rating',
+                            messageRegex: 'Is not a valid number.'),
                       ),
                       const SizedBox(height: kSize20),
                       TextFormField(
@@ -170,14 +161,11 @@ class _EditScreenState extends State<EditScreen> {
                             borderRadius: BorderRadius.circular(kSize10),
                           ),
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter a URL';
-                          } else if (!Validators.imageUrlRegex.hasMatch(value)) {
-                            return 'Enter a valid image URL (png, jpg, jpeg, gif, bmp)';
-                          }
-                          return null;
-                        },
+                        validator: (value) => Validations.imageUrl(
+                            value: value,
+                            message: 'Please enter a URL',
+                            messageRegex:
+                                'Enter a valid image URL (png, jpg, jpeg, gif, bmp)'),
                       ),
                       const SizedBox(height: kSize20),
                       Row(
@@ -195,20 +183,18 @@ class _EditScreenState extends State<EditScreen> {
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
                                 Future<List<ProductModel>> updateProducts =
-                                globalNotifier.updateProduct(
+                                    globalNotifier.updateProduct(
                                   ProductModel(
                                     id: widget.product!.id,
                                     title: titleController.text,
                                     description: descriptionController.text,
                                     category: categoryController.text,
-                                    price:
-                                    double.parse(priceController.text),
+                                    price: double.parse(priceController.text),
                                     image: imageController.text,
                                     rating: RatingModel(
-                                        rate: double.parse(
-                                            ratingController.text),
-                                        count:
-                                        widget.product!.rating.count),
+                                        rate:
+                                            double.parse(ratingController.text),
+                                        count: widget.product!.rating.count),
                                   ),
                                 );
                                 Navigator.pushNamed(context, kHomeScreen,
@@ -227,10 +213,10 @@ class _EditScreenState extends State<EditScreen> {
                               colorText: kTan,
                             ),
                             onPressed: () async {
-                                    await globalNotifier
-                                        .deleteProduct(widget.product!.id);
-                                    Navigator.pop(context);
-                                  },
+                              await globalNotifier
+                                  .deleteProduct(widget.product!.id);
+                              Navigator.pop(context);
+                            },
                             child: const Text('Cancelar'),
                           ),
                         ],

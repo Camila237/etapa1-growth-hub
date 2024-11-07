@@ -55,12 +55,7 @@ class _CreateProductScreenState extends State<CreateScreen> {
                     borderRadius: BorderRadius.circular(kSize10),
                   ),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a title';
-                  }
-                  return null;
-                },
+                validator:  (value) => Validations.title(value: value, message: 'Please enter a title'),
               ),
               const SizedBox(height: kSize20),
               TextFormField(
@@ -71,12 +66,7 @@ class _CreateProductScreenState extends State<CreateScreen> {
                     borderRadius: BorderRadius.circular(kSize10),
                   ),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a description';
-                  }
-                  return null;
-                },
+                validator: (value) => Validations.description(value: value, message: 'Please enter a description'),
               ),
               const SizedBox(height: kSize20),
               TextFormField(
@@ -87,12 +77,7 @@ class _CreateProductScreenState extends State<CreateScreen> {
                     borderRadius: BorderRadius.circular(kSize10),
                   ),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a category';
-                  }
-                  return null;
-                },
+                validator: (value) => Validations.category(value: value, message: 'Please enter a category'),
               ),
               const SizedBox(height: kSize20),
               TextFormField(
@@ -104,12 +89,7 @@ class _CreateProductScreenState extends State<CreateScreen> {
                   ),
                 ),
                 keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a price';
-                  }
-                  return null;
-                },
+                validator: (value) => Validations.number(value: value, message: 'Please enter a price', messageRegex: 'Is not a valid number.'),
               ),
               const SizedBox(height: kSize20),
               TextFormField(
@@ -120,14 +100,8 @@ class _CreateProductScreenState extends State<CreateScreen> {
                     borderRadius: BorderRadius.circular(kSize10),
                   ),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a URL';
-                  } else if (!Validators.imageUrlRegex.hasMatch(value)) {
-                    return 'Enter a valid image URL (png, jpg, jpeg, gif, bmp)';
-                  }
-                  return null;
-                },
+                validator: (value) =>
+                  Validations.imageUrl(value: value, message: 'Please enter a URL', messageRegex: 'Enter a valid image URL (png, jpg, jpeg, gif, bmp)'),
               ),
               const SizedBox(height: kSize20),
               TextFormField(
@@ -139,12 +113,7 @@ class _CreateProductScreenState extends State<CreateScreen> {
                     borderRadius: BorderRadius.circular(kSize10),
                   ),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter an rating';
-                  }
-                  return null;
-                },
+                validator: (value) => Validations.number(value: value, message: 'Please enter an rating', messageRegex: 'Is not a valid number.'),
               ),
               const SizedBox(height: 20),
               Row(
