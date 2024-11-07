@@ -213,12 +213,6 @@ class _EditScreenState extends State<EditScreen> {
                                 );
                                 Navigator.pushNamed(context, kHomeScreen,
                                     arguments: updateProducts);
-                              }else{
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('Please enter all fields'),
-                                  ),
-                                );
                               }
                             },
                             child: const Text('Update'),

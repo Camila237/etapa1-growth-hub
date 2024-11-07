@@ -147,41 +147,41 @@ class _CreateProductScreenState extends State<CreateScreen> {
                 },
               ),
               const SizedBox(height: 20),
-              CustomElevatedButton(
-                styleBtn: AppStyles.basicRoundedButton(
-                  colorBg: kTan,
-                  colorText: kWhite,
-                  radius: kSize20,
-                  widthSide: kSize2,
-                  colorBorder: kTan,
-                ),
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    final newProduct = ProductModel(
-                      id: 0,
-                      title: _titleController.text,
-                      description: _descriptionController.text,
-                      price: double.parse(_priceController.text),
-                      image: _imageController.text,
-                      rating: RatingModel(rate: double.parse(_ratingController.text), count: 0),
-                      category: _categoryController.text,
-                    );
-                    Future<List<ProductModel>> updateProducts = Provider.of<GlobalAppProvider>(context, listen: false)
-                        .createProduct(newProduct);
-                    Navigator.pushNamed(context, kHomeScreen, arguments: updateProducts);
-                  }else{
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Please fill all fields.'),
-                      ),
-                    );
-                  }
-                },
-                text: 'Create',
-                styleText: Theme.of(context).textTheme.labelLarge!.copyWith(
-                  color: kWhite,
-                  fontWeight: FontWeight.bold,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CustomElevatedButton(
+                    styleBtn: AppStyles.basicRoundedButton(
+                      colorBg: kTan,
+                      colorText: kWhite,
+                      radius: kSize20,
+                      widthSide: kSize2,
+                      colorBorder: kTan,
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        final newProduct = ProductModel(
+                          id: 0,
+                          title: _titleController.text,
+                          description: _descriptionController.text,
+                          price: double.parse(_priceController.text),
+                          image: _imageController.text,
+                          rating: RatingModel(rate: double.parse(_ratingController.text), count: 0),
+                          category: _categoryController.text,
+                        );
+                        Future<List<ProductModel>> updateProducts = Provider.of<GlobalAppProvider>(context, listen: false)
+                            .createProduct(newProduct);
+                        Navigator.pushNamed(context, kHomeScreen, arguments: updateProducts);
+                      }
+                    },
+                    text: 'Create',
+                    styleText: Theme.of(context).textTheme.labelLarge!.copyWith(
+                      color: kWhite,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
