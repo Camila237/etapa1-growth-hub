@@ -5,7 +5,7 @@ Esta aplicación es tipo CRUD desarrollada para manejar una lista de productos a
 - **Fuente de datos**: Archivo JSON en assets.
 - **Gestor de estado**: `provider`.
 
-> [!IMPORTANT]
+> [!IMPORTANTE]
 > Este proyecto fue desarrollado siguiendo lineamientos específicos, que mencionaban el no uso de dependencias adicionales aparte de la dependencia del gestor de estado.
 
 ### Limitaciones
