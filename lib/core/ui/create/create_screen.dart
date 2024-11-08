@@ -139,7 +139,7 @@ class _CreateProductScreenState extends State<CreateScreen> {
                           rating: RatingModel(rate: double.parse(_ratingController.text), count: 0),
                           category: _categoryController.text,
                         );
-                        Future<List<ProductModel>> updateProducts = Provider.of<GlobalAppProvider>(context, listen: false)
+                        Future<List<ProductModel>> updateProducts = Provider.of<ProductsProvider>(context, listen: false)
                             .createProduct(newProduct);
                         Navigator.pushNamed(context, kHomeScreen, arguments: updateProducts);
                       }

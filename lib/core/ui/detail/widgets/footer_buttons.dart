@@ -36,7 +36,7 @@ class FooterButtons extends StatelessWidget {
           onPressed: () async {
             final bool? confirm = await _showConfirmationDialog(context);
             if (confirm == true) {
-              final updateProducts = Provider.of<GlobalAppProvider>(
+              final updateProducts = Provider.of<ProductsProvider>(
                 context,
                 listen: false,
               ).deleteProduct(product.id);
@@ -73,7 +73,6 @@ Future<bool?> _showConfirmationDialog(BuildContext context) {
       [
         CustomTextButton(onPressed: () => Navigator.pop(context, false), text:  'Cancel', colorText: kGrey),
         CustomTextButton(onPressed: () => Navigator.pop(context, true), text:  'Delete', colorText: kBrown),
-        // _dialogButton(context, 'Delete', kBrown, true),
       ],
     ),
   );

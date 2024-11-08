@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         title: kNameApp,
         initialRoute: kSplashScreen,
         onGenerateRoute: AppRouter.generateRoute,
-        debugShowCheckedModeBanner: kDebugMode,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

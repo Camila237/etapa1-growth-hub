@@ -5,7 +5,8 @@ Esta aplicación es tipo CRUD desarrollada para manejar una lista de productos a
 - **Fuente de datos**: Archivo JSON en assets.
 - **Gestor de estado**: `provider`.
 
-Este proyecto fue desarrollado siguiendo lineamientos específicos, que mencionaban el no uso de dependencias adicionales aparte de la dependencia del gestor de estado.
+> [!IMPORTANT]
+> Este proyecto fue desarrollado siguiendo lineamientos específicos, que mencionaban el no uso de dependencias adicionales aparte de la dependencia del gestor de estado.
 
 ### Limitaciones
 
@@ -15,7 +16,7 @@ Cada vez que la aplicación se reinicia, cualquier modificación o eliminación 
 
 1. Clona el repositorio.
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/Camila237/etapa1-growth-hub.git
    ```
 2. Navega al directorio del proyecto.
     ```bash

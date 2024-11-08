@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:etapa1/share/exports.dart';
 import 'package:provider/provider.dart';
+import 'package:etapa1/share/exports.dart';
 import 'package:etapa1/core/exports.dart';
 import 'package:etapa1/config/exports.dart';
 
@@ -55,7 +55,7 @@ class _EditScreenState extends State<EditScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final globalNotifier = Provider.of<GlobalAppProvider>(context);
+    final globalNotifier = Provider.of<ProductsProvider>(context);
 
     return widget.product == null
         ? const CustomErrorNavigation()

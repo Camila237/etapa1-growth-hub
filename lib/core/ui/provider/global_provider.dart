@@ -4,12 +4,12 @@ import 'package:flutter/services.dart';
 
 import 'package:etapa1/core/exports.dart';
 
-class GlobalAppProvider extends ChangeNotifier {
+class ProductsProvider extends ChangeNotifier {
   bool isLoading = false;
   String error = '';
   List<ProductModel> products = [];
 
-  GlobalAppProvider() {}
+  ProductsProvider() {}
 
   Future<List<ProductModel>> loadProducts() async {
     try {

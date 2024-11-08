@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    final provider = Provider.of<GlobalAppProvider>(context, listen: false);
+    final provider = Provider.of<ProductsProvider>(context, listen: false);
     _dataFuture = widget.data ?? provider.loadProducts();
   }
 

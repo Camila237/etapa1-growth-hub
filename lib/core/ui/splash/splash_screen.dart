@@ -13,13 +13,16 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   double _opacity = kNone;
+  final Duration _duration2Sec = Duration(seconds: int.parse(kSize2.toString()));
 
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: int.parse(kSize2.toString())), () {
-      Navigator.pushReplacementNamed(context, kHomeScreen,);
-    });
+    _setOpacity();
+    _navigateToHome();
+  }
+
+  void _setOpacity() {
     Timer(Duration(milliseconds: int.parse(kSize100.toString())), () {
       setState(() {
         _opacity = kSize1;
@@ -27,6 +30,11 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
+  void _navigateToHome() {
+    Timer(_duration2Sec, () {
+      Navigator.pushReplacementNamed(context, kHomeScreen);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

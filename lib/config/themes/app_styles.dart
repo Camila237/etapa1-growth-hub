@@ -11,7 +11,7 @@ class AppStyles {
     double? elevation,
   }) =>
       ButtonStyle(
-        backgroundColor: WidgetStateProperty.all<Color>(colorBg), // Background color
+        backgroundColor: WidgetStateProperty.all<Color>(colorBg),
         foregroundColor: WidgetStateProperty.all<Color>(colorText), // Text color
         padding: WidgetStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(horizontal: kSize20, vertical: kSize16)),
         elevation: WidgetStateProperty.all<double?>(elevation),

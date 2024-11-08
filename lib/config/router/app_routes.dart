@@ -1,4 +1,3 @@
-// AppRouter class in `lib/config/router/app_router.dart`
 import 'package:flutter/material.dart';
 import 'package:etapa1/core/exports.dart';
 import 'router_constants.dart';
