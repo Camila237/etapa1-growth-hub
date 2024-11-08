@@ -9,3 +9,4 @@ export 'themes/app_styles.dart';
 
 export 'router/app_routes.dart';
 export 'router/router_constants.dart';
+export 'router/app_providers.dart';

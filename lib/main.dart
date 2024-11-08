@@ -1,5 +1,3 @@
-import 'package:etapa1/config/router/app_providers.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:etapa1/config/exports.dart';
@@ -9,7 +7,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   const MyApp({super.key});
 
   @override
@@ -20,7 +17,7 @@ class MyApp extends StatelessWidget {
         title: kNameApp,
         initialRoute: kSplashScreen,
         onGenerateRoute: AppRouter.generateRoute,
-        debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: kEnv == 'dev' ? true : false,
       ),
     );
   }
