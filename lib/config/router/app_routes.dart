@@ -11,14 +11,12 @@ class AppRouter {
           settings: settings,
         );
       case kHomeScreen:
-        final listProducts = settings.arguments as Future<List<ProductModel>>?;
         return MaterialPageRoute(
-            builder: (_) => HomeScreen(data: listProducts,),
+            builder: (_) => const HomeScreen(),
             settings: settings);
       case kCreateScreen:
         return MaterialPageRoute(
-            builder: (_) => const CreateScreen(),
-            settings: settings);
+            builder: (_) => const CreateScreen(), settings: settings);
       case kDetailScreen:
         final product = settings.arguments as ProductModel?;
         return MaterialPageRoute(
@@ -33,11 +31,8 @@ class AppRouter {
         );
       default:
         return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            body: Center(
-              child: Text('No route defined for ${settings.name}'),
-            ),
-          ),
+          builder: (_) => const SplashScreen(),
+          settings: settings,
         );
     }
   }
