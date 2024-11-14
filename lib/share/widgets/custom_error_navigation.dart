@@ -13,7 +13,7 @@ class CustomErrorNavigation extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            'An error occurred, you have not selected a product.',
+            'Lo sentimos ocurrió un error, no has seleccionado un producto.',
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
               color: kBlack,
               fontWeight: FontWeight.w400,
@@ -33,7 +33,7 @@ class CustomErrorNavigation extends StatelessWidget {
             onPressed: () =>
                 Navigator.pushReplacementNamed(context, kHomeScreen),
             child: Text(
-              'Go Home',
+              'Ir a la vista principal',
               style: Theme.of(context).textTheme.labelLarge!.copyWith(
                 color: kWhite,
                 fontWeight: FontWeight.w600,
