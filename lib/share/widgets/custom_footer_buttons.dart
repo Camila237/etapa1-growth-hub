@@ -1,9 +1,9 @@
-part of '../detail_screen.dart';
+part of '../../core/ui/screens/detail_screen.dart';
 
-class FooterButtons extends StatelessWidget {
+class CustomFooterButtons extends StatelessWidget {
   final ProductModel product;
-
-  const FooterButtons({super.key, required this.product});
+  final Function(ProductModel) onProductUpdated;
+  const CustomFooterButtons({super.key, required this.product, required this.onProductUpdated});
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +12,22 @@ class FooterButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CustomElevatedButton(
-          onPressed: () => Navigator.pushNamed(
-            context,
-            kEditScreen,
-            arguments: product,
-          ),
+          onPressed: () async {
+            List<ProductModel>? listUpdated = await Navigator.pushNamed(
+              context,
+              kEditScreen,
+              arguments: product,
+            ) as List<ProductModel>?;
+
+            if (listUpdated != null) {
+              for (ProductModel updatedProduct in listUpdated) {
+                if (updatedProduct.id == product.id) {
+                  onProductUpdated(updatedProduct);
+                  break;
+                }
+              }
+            }
+          },
           styleBtn: AppStyles.basicRoundedButton(
             radius: kSize20,
             colorBg: kTan,
@@ -24,7 +35,7 @@ class FooterButtons extends StatelessWidget {
             colorBorder: kTan,
             colorText: kWhite,
           ),
-          text: 'Edit',
+          text: 'Editar',
           icon: const Icon(Icons.edit, color: kWhite, size: kSize16),
           styleText: Theme.of(context).textTheme.labelLarge!.copyWith(
                 color: kWhite,
@@ -36,12 +47,9 @@ class FooterButtons extends StatelessWidget {
           onPressed: () async {
             final bool? confirm = await _showConfirmationDialog(context);
             if (confirm == true) {
-              final updateProducts = Provider.of<ProductsProvider>(
-                context,
-                listen: false,
-              ).deleteProduct(product.id);
-              Navigator.pushNamed(context, kHomeScreen,
-                  arguments: updateProducts);
+              final provider = Provider.of<ProductsProvider>(context, listen: false);
+              provider.deleteProduct(product.id);
+              Navigator.pop(context);
             }
           },
           styleBtn: AppStyles.basicRoundedButton(
@@ -51,7 +59,7 @@ class FooterButtons extends StatelessWidget {
             colorBorder: kTan,
             colorText: kTan,
           ),
-          text: 'Delete',
+          text: 'Eliminar',
           icon: const Icon(Icons.delete, color: kTan, size: kSize16),
           styleText: Theme.of(context).textTheme.labelLarge!.copyWith(
                 color: kTan,
@@ -68,11 +76,11 @@ Future<bool?> _showConfirmationDialog(BuildContext context) {
     context: context,
     builder: (context) => CustomDialogs.basic(
       context,
-      'Confirm Delete',
-      'Are you sure you want to delete this product?',
+      'Eliminar un producto',
+      '¿Estás seguro que quieres eliminar este producto?',
       [
-        CustomTextButton(onPressed: () => Navigator.pop(context, false), text:  'Cancel', colorText: kGrey),
-        CustomTextButton(onPressed: () => Navigator.pop(context, true), text:  'Delete', colorText: kBrown),
+        CustomTextButton(onPressed: () => Navigator.pop(context, false), text:  'Cancelar', colorText: kGrey),
+        CustomTextButton(onPressed: () => Navigator.pop(context, true), text:  'Eliminar', colorText: kBrown),
       ],
     ),
   );

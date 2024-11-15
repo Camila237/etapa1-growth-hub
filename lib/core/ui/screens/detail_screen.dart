@@ -1,24 +1,43 @@
+import 'package:flutter/material.dart';
+
 import 'package:etapa1/share/exports.dart';
 import 'package:etapa1/share/helpers/custom_dialogs.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import 'package:etapa1/core/exports.dart';
 import 'package:etapa1/config/exports.dart';
+import 'package:provider/provider.dart';
 
-part 'widgets/header_info.dart';
-part 'widgets/footer_buttons.dart';
-class DetailScreen extends StatelessWidget {
+part '../../../share/widgets/custom_header_info.dart';
+part '../../../share/widgets/custom_footer_buttons.dart';
+class DetailScreen extends StatefulWidget {
   final ProductModel? product;
 
   const DetailScreen({super.key, required this.product});
 
   @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+
+  late ProductModel? product;
+
+  @override
+  void initState() {
+    product = widget.product;
+    super.initState();
+  }
+
+  void updateProduct(ProductModel updatedProduct) {
+    setState(() {
+      product = updatedProduct;
+    });
+  }
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: kWhite,
-        body: product == null
+        body: widget.product == null
             ? const CustomErrorNavigation()
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -45,7 +64,7 @@ class DetailScreen extends StatelessWidget {
                     child: CustomScrollView(
                       slivers: [
                         SliverToBoxAdapter(
-                          child: HeaderInfo(product: product!,),
+                          child: CustomHeaderInfo(product: product!,),
                         ),
                         SliverPadding(
                           padding: const EdgeInsets.all(kSize20),
@@ -55,7 +74,7 @@ class DetailScreen extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        'Category: ',
+                                        'Categoría: ',
                                         style: Theme.of(context)
                                             .textTheme
                                             .titleMedium!
@@ -86,7 +105,10 @@ class DetailScreen extends StatelessWidget {
                                   const SizedBox(
                                     height: kSize20,
                                   ),
-                                  FooterButtons(product: product!),
+                                  CustomFooterButtons(
+                                    product: product!,
+                                    onProductUpdated: updateProduct,
+                                  ),
                                 ]
                             ),
                           ),

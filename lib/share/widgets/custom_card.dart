@@ -3,7 +3,7 @@ import 'package:etapa1/core/exports.dart';
 import 'package:etapa1/config/exports.dart';
 
 class CustomCard extends StatelessWidget {
-  final ProductModel element;
+  final ProductModel? element;
   const CustomCard({super.key, required this.element});
 
   @override
@@ -25,7 +25,7 @@ class CustomCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(kSize24),
                 child: Image.network(
-                  element.image,
+                  element?.image ?? 'https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -40,7 +40,7 @@ class CustomCard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        element.title,
+                        element?.title ?? '',
                         style: const TextStyle(
                           fontSize: kSize16,
                           color: kBlack,
@@ -52,7 +52,7 @@ class CustomCard extends StatelessWidget {
                     ),
                     const SizedBox(width: kSize10),
                     Text(
-                      "\$ ${element.price}",
+                      "\$ ${element?.price ?? 0}",
                       style: const TextStyle(
                         fontSize: kSize14,
                         color: kBlack,
@@ -69,7 +69,7 @@ class CustomCard extends StatelessWidget {
                     const Icon(Icons.star, color: kYellow, size: kSize20),
                     const SizedBox(width: kSize6),
                     Text(
-                      element.rating.rate.toString(),
+                      element?.rating.rate.toString() ?? '0',
                       style: const TextStyle(
                         fontSize: kSize14,
                         color: kBlack,

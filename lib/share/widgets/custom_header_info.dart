@@ -1,7 +1,7 @@
-part of '../detail_screen.dart';
-class HeaderInfo extends StatelessWidget {
+part of '../../core/ui/screens/detail_screen.dart';
+class CustomHeaderInfo extends StatelessWidget {
   final ProductModel product;
-  const HeaderInfo({super.key, required this.product});
+  const CustomHeaderInfo({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class HeaderInfo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  product!.title,
+                  product.title,
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     color: kBlack,
                     fontWeight: FontWeight.w600,
