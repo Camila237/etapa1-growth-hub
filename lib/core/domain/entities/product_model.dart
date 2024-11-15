@@ -44,7 +44,7 @@ class ProductModel{
       title: json['title'],
       description: json['description'],
       category: json['category'],
-      price: json['price'],
+      price: json['price'].toDouble(),
       image: json['image'],
       rating: RatingModel.fromJson(json['rating']),
     );

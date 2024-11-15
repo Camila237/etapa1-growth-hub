@@ -12,7 +12,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   double _opacity = kNone;
-  final Duration _duration2Sec = Duration(seconds: kSize2.toInt());
+  final Duration _duration2Sec = Duration(seconds: kSize2.round());
 
   @override
   void initState() {
@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _setOpacity() {
-    Timer(Duration(milliseconds: int.parse(kSize100.toString())), () {
+    Timer(Duration(milliseconds: int.parse(kSize100.round().toString())), () {
       setState(() {
         _opacity = kSize1;
       });
@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: AnimatedOpacity(
           opacity: _opacity,
-          duration: Duration(seconds: int.parse(kSize2.toString())),
+          duration: Duration(seconds: int.parse(kSize2.round().toString())),
           child: const Icon(
             Icons.shopping_bag,
             size: kSize100,
