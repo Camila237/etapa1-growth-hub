@@ -14,15 +14,18 @@ class Validations{
   static String? imageUrl({required String? value, required String message, required String messageRegex}) {
     return _ImageUrlValidation().validate(value: value, message: message, messageRegex: messageRegex);
   }
-  static String? number({required String? value, required String message, required String messageRegex}) {
-    return _NumberValidation().validate(value: value, message: message, messageRegex: messageRegex);
+  static String? price({required String? value, required String message, required String messageRegex}) {
+    return _PriceValidation().validate(value: value, message: message, messageRegex: messageRegex);
+  }
+  static String? rate({required String? value, required String message, required String messageRegex}) {
+    return _RateValidation().validate(value: value, message: message, messageRegex: messageRegex);
   }
 }
 
 class _TitleValidation extends Validator with RequiredFieldValidator {
   @override
   String? validate({required String? value, required String message, String? messageRegex}) {
-    final RegExp nameRegExp = RegExp(r"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü]+$");
+    final RegExp nameRegExp = RegExp(r"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s,.:0-9'%]+$");
 
     String? msg = validateRequiredField(value: value, message: message);
     if (msg != null) {
@@ -39,7 +42,7 @@ class _TitleValidation extends Validator with RequiredFieldValidator {
 class _DescriptionValidation extends Validator with RequiredFieldValidator {
   @override
   String? validate({required String? value, required String message, String? messageRegex}) {
-    final RegExp nameRegExp = RegExp(r"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü]+$");
+    final RegExp nameRegExp = RegExp(r"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s,.:0-9'%/()]+$");
 
     String? msg = validateRequiredField(value: value, message: message);
     if (msg != null) {
@@ -56,7 +59,7 @@ class _DescriptionValidation extends Validator with RequiredFieldValidator {
 class _CategoryValidation extends Validator with RequiredFieldValidator {
   @override
   String? validate({required String? value, required String message, String? messageRegex}) {
-    final RegExp nameRegExp = RegExp(r"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü]+$");
+    final RegExp nameRegExp = RegExp(r"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s,.:0-9']+$");
 
     String? msg = validateRequiredField(value: value, message: message);
     if (msg != null) {
@@ -89,10 +92,10 @@ class _ImageUrlValidation extends Validator with RequiredFieldValidator {
   }
 }
 
-class _NumberValidation extends Validator with RequiredFieldValidator {
+class _PriceValidation extends Validator with RequiredFieldValidator {
   @override
   String? validate({required String? value, required String message, String? messageRegex}) {
-    final RegExp numberRegExp = RegExp(r'^\d{1,3}([.,]\d{1,2})?$');
+    final RegExp numberRegExp = RegExp(r'^\d{1,}([.,]\d{1,2})?$');
 
     String? msg = validateRequiredField(value: value, message: message);
     if (msg != null) {
@@ -100,6 +103,24 @@ class _NumberValidation extends Validator with RequiredFieldValidator {
     }
 
     if (!numberRegExp.hasMatch(value!)) {
+      return messageRegex;
+    }
+
+    return null;
+  }
+}
+
+class _RateValidation extends Validator with RequiredFieldValidator {
+  @override
+  String? validate({required String? value, required String message, String? messageRegex}) {
+    final RegExp rateRegExp = RegExp(r'^[1-5](?:[.,]\d+)?$');
+
+    String? msg = validateRequiredField(value: value, message: message);
+    if (msg != null) {
+      return msg;
+    }
+
+    if (!rateRegExp.hasMatch(value!)) {
       return messageRegex;
     }
 

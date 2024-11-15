@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-import 'package:etapa1/config/router/router_constants.dart';
 import '../../../config/exports.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,7 +12,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   double _opacity = kNone;
-  final Duration _duration2Sec = Duration(seconds: int.parse(kSize2.toString()));
+  final Duration _duration2Sec = Duration(seconds: kSize2.toInt());
 
   @override
   void initState() {
