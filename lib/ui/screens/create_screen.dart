@@ -1,3 +1,6 @@
+import 'package:etapa1/domain/provider/products_provider.dart';
+import 'package:etapa1/ui/widgets/custom_elevated_button.dart';
+import 'package:etapa1/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -7,8 +10,6 @@ import 'package:etapa1/domain/themes/app_colors.dart';
 import 'package:etapa1/domain/themes/app_dimensions.dart';
 import 'package:etapa1/domain/themes/app_styles.dart';
 import 'package:etapa1/domain/validations/validations.dart';
-import 'package:etapa1/ui/provider/products_provider.dart';
-import 'package:etapa1/ui/widgets/exports.dart';
 
 /// * Screen to create a new product.
 /// * This screen allows you to create a new product by entering the necessary information such as title, description, price, image, rating, and category.

@@ -1,17 +1,19 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:etapa1/data/entities/product_model.dart';
 import 'package:etapa1/domain/helpers/custom_dialogs.dart';
 import 'package:etapa1/domain/router/router_constants.dart';
 import 'package:etapa1/domain/themes/app_colors.dart';
 import 'package:etapa1/domain/themes/app_dimensions.dart';
 import 'package:etapa1/domain/themes/app_styles.dart';
-import 'package:etapa1/ui/provider/products_provider.dart';
-import 'package:etapa1/ui/widgets/exports.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:etapa1/domain/provider/products_provider.dart';
+import 'package:etapa1/ui/widgets/custom_error_navigation.dart';
+import 'package:etapa1/ui/widgets/custom_elevated_button.dart';
+import 'package:etapa1/ui/widgets/custom_text_button.dart';
 
 
-part '../../widgets/data/custom_header_info.dart';
-part '../../widgets/data/custom_footer_buttons.dart';
+part '../widgets/custom_header_info.dart';
+part '../widgets/custom_footer_buttons.dart';
 
 /// * Screen to display the details of a product.
 /// * This screen displays detailed information about a product and allows you to perform specific actions such as refreshing or navigating back.

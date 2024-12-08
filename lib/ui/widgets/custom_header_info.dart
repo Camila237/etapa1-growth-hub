@@ -1,4 +1,4 @@
-part of '../../screens/data/detail_screen.dart';
+part of '../screens/detail_screen.dart';
 
 /// * Class that represents the header information of the detail screen.
 class CustomHeaderInfo extends StatelessWidget {

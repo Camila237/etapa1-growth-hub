@@ -1,4 +1,4 @@
-part of '../../screens/data/detail_screen.dart';
+part of '../screens/detail_screen.dart';
 
 /// * Class that represents the footer buttons of the detail screen.
 class CustomFooterButtons extends StatelessWidget {

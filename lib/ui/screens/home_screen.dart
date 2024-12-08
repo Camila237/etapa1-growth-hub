@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:etapa1/ui/widgets/custom_app_bar.dart';
+import 'package:etapa1/ui/widgets/custom_card.dart';
 import 'package:etapa1/data/entities/product_model.dart';
 import 'package:etapa1/domain/router/router_constants.dart';
 import 'package:etapa1/domain/themes/app_colors.dart';
 import 'package:etapa1/domain/themes/app_dimensions.dart';
-import 'package:etapa1/ui/provider/products_provider.dart';
-import 'package:etapa1/ui/widgets/exports.dart';
+import 'package:etapa1/domain/provider/products_provider.dart';
 
 /// * Screen to display the list of products.
 /// * This screen displays a list of products in a grid view and allows you to navigate to the details of each product.

@@ -42,14 +42,14 @@ class Validations{
 class _TitleValidation extends Validator with RequiredFieldValidator {
   @override
   String? validate({required String? value, required String message, String? messageRegex}) {
-    final RegExp nameRegExp = RegExp(r"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s,.:0-9'%]+$");
-
+    final RegExp titleRegExp = RegExp(r"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s,.:0-9'% ]+$");
+    
     String? msg = validateRequiredField(value: value, message: message);
     if (msg != null) {
       return msg;
     }
 
-    if (!nameRegExp.hasMatch(value!)) {
+    if (!titleRegExp.hasMatch(value!)) {
       return message;
     }
 
@@ -61,14 +61,14 @@ class _TitleValidation extends Validator with RequiredFieldValidator {
 class _DescriptionValidation extends Validator with RequiredFieldValidator {
   @override
   String? validate({required String? value, required String message, String? messageRegex}) {
-    final RegExp nameRegExp = RegExp(r"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s,.:0-9'%/()]+$");
+    final RegExp descriptionRegExp = RegExp(r"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s,.:0-9'%/()]+$");
 
     String? msg = validateRequiredField(value: value, message: message);
     if (msg != null) {
       return msg;
     }
 
-    if (!nameRegExp.hasMatch(value!)) {
+    if (!descriptionRegExp.hasMatch(value!)) {
       return message;
     }
 
@@ -80,14 +80,14 @@ class _DescriptionValidation extends Validator with RequiredFieldValidator {
 class _CategoryValidation extends Validator with RequiredFieldValidator {
   @override
   String? validate({required String? value, required String message, String? messageRegex}) {
-    final RegExp nameRegExp = RegExp(r"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s,.:0-9']+$");
+    final RegExp categoryRegExp = RegExp(r"^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s,.:0-9']+$");
 
     String? msg = validateRequiredField(value: value, message: message);
     if (msg != null) {
       return msg;
     }
 
-    if (!nameRegExp.hasMatch(value!)) {
+    if (!categoryRegExp.hasMatch(value!)) {
       return message;
     }
 
